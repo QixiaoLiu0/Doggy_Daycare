@@ -38,3 +38,71 @@
 // when a calculation is needed, set the innerHTML of the calculated-cost element to the appropriate value
 
 
+
+const FULL_DAY_RATE = 40;
+const HALF_DAY_RATE = 20;
+
+let selectedDays = [];
+let currentRate = 'half'; // init to half
+
+$(() => {
+  // date has been clicked
+  $('.day-selector li').on('click', function () {
+    const dayId = $(this).attr('id');
+    $(this).toggleClass('clicked');
+
+    if ($(this).hasClass('clicked')) {
+      selectedDays.push(dayId);
+    } else {
+      selectedDays = selectedDays.filter(d => d !== dayId);
+    }
+
+    calculateTotal();
+  });
+
+  // half-day 
+  $('#half').on('click', function () {
+    if (currentRate !== 'half') {
+      switchRate('half');
+    }
+  });
+
+  // full-day 
+  $('#full').on('click', function () {
+    if (currentRate !== 'full') {
+      switchRate('full');
+    }
+  });
+
+  // clear btn
+  $('#clear-button').on('click', () => {
+    $('.day-selector li').removeClass('clicked');
+    selectedDays = [];
+
+    switchRate('half'); // toggle to half
+    updateTotalCost(0);
+  });
+});
+
+
+const switchRate = rate => {
+  currentRate = rate;
+
+  rate === 'full'
+    ? ($('#full').addClass('clicked'), $('#half').removeClass('clicked'))
+    : ($('#half').addClass('clicked'), $('#full').removeClass('clicked'));
+
+  calculateTotal();
+};
+
+// calculate total price
+const calculateTotal = () => {
+  const rateValue = currentRate === 'full' ? FULL_DAY_RATE : HALF_DAY_RATE;
+  const total = selectedDays.length * rateValue;
+  updateTotalCost(total);
+};
+
+// render
+const updateTotalCost = amount => {
+  $('#calculated-cost').text(`$${amount}`);
+};

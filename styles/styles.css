@@ -1,4 +1,4 @@
-/************* your name: 
+/************* your name: Qixiao Liu
 
 INSTRUCTIONS:
 Comments starting with TO-DO have been included in this file to describe the needed styling: please translate these to the appropriate CSS declarations. 
@@ -16,16 +16,18 @@ You are discouraged from changing any provided CSS.
 
 /************* site defaults *************/
 body {
-    width: 950px;
-    margin: 0 auto;
-    font-family: 'Montserrat', sans-serif;
-    line-height: 1.5;
+	width: 950px;
+	margin: 0 auto;
+	font-family: 'Montserrat', sans-serif;
+	line-height: 1.5;
 }
 
 /* TO DO: all elements with the .flex class applied are to be made into flex-box containers. */
+.flex {
+	display: flex;
+}
 
 
- 
 
 /************* site-wide text styling *************/
 
@@ -41,8 +43,45 @@ body {
         - change the text colour to white, and 
         - change the cursor to pointer.
 */
+h1 {
+	font-size: 48px;
+	text-align: center;
+	line-height: 48px;
+}
 
+h2 {
+	font-size: 36px;
+	margin-bottom: 12px;
+}
 
+.large-text {
+	font-size: 24px;
+}
+
+.fake-button {
+	background-color: #E5AF42;
+	text-align: center;
+	line-height: 3;
+	border: 1px solid #000;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+main a:hover,
+footer a:hover {
+	text-decoration: underline;
+}
+
+.fake-button:hover,
+.blue-hover:hover {
+	text-decoration: underline;
+	background-color: #4278e5;
+	color: #fff;
+	cursor: pointer;
+}
 
 
 
@@ -58,9 +97,41 @@ body {
     - there will be 25px of space between the header and main, and 50px of space between main and footer.
     - the footer will be 60px tall, have a font-weight of 200, and the text within will be centered vertically and horizontally.
 */
+header,
+footer {
+	background-color: #E5AF42;
+}
 
+header {
+	height: 150px;
+}
 
+header img {
+	width: 100px;
+	height: 100px;
+	padding: 25px 0 25px 25px;
+}
 
+header a.flex {
+	align-items: center;
+}
+
+header h1 {
+	flex: 1;
+}
+
+main {
+	margin: 25px 0 50px 0;
+}
+
+footer {
+	display: flex;
+	flex-direction: column;
+	height: 60px;
+	font-weight: 200;
+	justify-content: center;
+	align-items: center;
+}
 
 
 
@@ -73,7 +144,32 @@ body {
     - each fake-button on this page will be 250px wide with 150px of space between them.
     - the pair of fake-buttons will be centered on the page. HINT: can calculate the required margin to make them appear to be centered.
 */
+.index img {
+	width: 300px;
+	margin-bottom: 50px;
+}
 
+.index>div.flex:first-child {
+	gap: 25px;
+}
+
+.index h2 {
+	line-height: 36px;
+}
+
+.index p {
+	margin-bottom: 12px;
+}
+
+.index .fake-button {
+	width: 250px;
+
+}
+
+.index>div.flex:last-child {
+	gap: 150px;
+	justify-content: center;
+}
 
 
 
@@ -92,10 +188,51 @@ body {
     - all items within the page will be centered within their available space.
 
 */
+.booking-page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 18px;
+}
+
+.booking-page .day-selector {
+	margin-bottom: 12px;
+}
+
+.booking-page ul.flex {
+	gap: 20px;
+}
+
+.booking-page ul li {
+	width: 60px;
+	text-align: center;
+}
+
+.booking-page li,
+.booking-page .small-button {
+	border: 1px solid #000;
+}
+
+.booking-page .small-button {
+	padding: 5px;
+}
+
+.booking-page .top-margin {
+	margin-top: 24px;
+	margin-bottom: 12px;
+}
+
+#clear-button {
+	width: 200px;
+}
 
 
-
-
+.booking-page .clicked {
+	background-color: #E5AF42;
+}
 
 
 
@@ -113,7 +250,58 @@ body {
     - all form input, textarea, and and button elements will have the same font as the rest of the page, a line-height of 24px, a font-size of 16px, and the same border as other buttons on the site. There will be 24px of space below each of these elements.
     - the edges of the button will line up exactly with the text-area element. HINT: time for some math!
 */
+.contact {
+	height: 420px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
+}
 
+.contact .flex {
+	gap: 24px;
+}
 
+.contact label {
+	width: 150px;
+	text-align: right;
+}
 
+.contact input,
+.contact textarea {
+	width: 300px;
+}
+
+.contact textarea {
+	height: 150px;
+}
+
+.contact input,
+.contact textarea,
+.contact button {
+	font-family: inherit;
+	line-height: 24px;
+	font-size: 16px;
+	border: 1px solid #000;
+	margin-bottom: 24px;
+}
+
+.contact button.fake-button {
+	line-height: 3;
+	background-color: #E5AF42;
+	text-align: center;
+}
+
+.contact form {
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+}
+
+.contact button {
+	width: 305.6px;
+	margin-left: 174px;
+
+}
