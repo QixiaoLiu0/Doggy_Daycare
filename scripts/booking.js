@@ -54,8 +54,8 @@ $(function () {
   $('#clear-button').on('click', function () {
     $('.day-selector li').removeClass('clicked');
     selectedDays = [];
-    switchRate('half'); // toggle to half
-    updateTotalCost(0);
+    switchRate('full'); // toggle to full
+    updateTotalCost();
   });
 });
 

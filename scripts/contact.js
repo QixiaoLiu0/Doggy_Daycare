@@ -2,12 +2,14 @@
 
 // hint: you can change the style of an element by modifying the value of that element's .style.fontSize, or by updating its .classList.
 
+
+
+/* global $ */
 $(function () {
   $('#submit-button').on('click', function (e) {
     e.preventDefault();
 
-    $('#contact-page').html(
-      '<p style="font-size: 24px;">Thank you for your message</p>'
-    );
+    let msgStr = '<p id="submit-message">Thank you for your message!</p>';
+    $('#contact-page').html(msgStr);
   });
 });
