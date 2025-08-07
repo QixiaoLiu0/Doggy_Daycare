@@ -7,7 +7,7 @@ const FULL_DAY_RATE = 40;
 const HALF_DAY_RATE = 20;
 
 var selectedDays = [];
-var currentRate = 'half'; // init to half
+var currentRate = 'full'; // init to half
 
 /* global $ */
 $(function () {
