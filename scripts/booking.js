@@ -83,5 +83,5 @@ function calculateTotal() {
 }
 
 function updateTotalCost(price) {
-  $('#calculated-cost').text('' + price);
+  $('#calculated-cost').text(price ? price : 0);
 }
