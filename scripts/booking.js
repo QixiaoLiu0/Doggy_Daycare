@@ -3,11 +3,12 @@
 // Do any of these variables need to be initialized when the page is loaded? 
 // When do they need to be reset or updated?
 
-const FULL_DAY_RATE = 40;
+
+const FULL_DAY_RATE = 35;
 const HALF_DAY_RATE = 20;
 
-var selectedDays = [];
-var currentRate = 'full'; // init to half
+let selectedDays = [];    // using array instead of dayCounter
+let currentRate = 'full'; // init to full
 
 /* global $ */
 $(function () {
@@ -17,7 +18,7 @@ $(function () {
   // added challenge: don't update the dayCounter if the same day is clicked more than once. hint: .classList.contains() might be helpful here!
 
   $('.day-selector li').on('click', function () {
-    var dayId = $(this).attr('id');
+    let dayId = $(this).attr('id');
     $(this).toggleClass('clicked');
 
     if ($(this).hasClass('clicked')) {
@@ -34,19 +35,11 @@ $(function () {
   /********* change rate *********/
   // when the half-day button is clicked, set the daily rate to $20, add the "clicked" class to the "half" element, remove it from the "full" element, and recalculate the total cost.
 
-  $('#half').on('click', function () {
-    if (currentRate !== 'half') {
-      switchRate('half');
-    }
-  });
+  rateToggle('#half', 'half');
 
   // when the full-day button is clicked, the daily rate is set back to $35, the clicked class is added to "full" and removed from "half", and the total cost is recalculated.
 
-  $('#full').on('click', function () {
-    if (currentRate !== 'full') {
-      switchRate('full');
-    }
-  });
+  rateToggle('#full', 'full');
 
   /********* clear days *********/
   // when the clear-button is clicked, the "clicked" class is removed from all days, any other relevant variables are reset, and the calculated cost is set to 0.
@@ -76,9 +69,26 @@ function switchRate(rate) {
   calculateTotal();
 }
 
+
+
+
+function rateToggle(selector, rate) {
+  $(selector).on('click', function () {
+    if (currentRate !== rate) {
+      switchRate(rate);
+    }
+  });
+}
+
+
+
+
+/**
+ * calculation & render
+ */
 function calculateTotal() {
-  var rateValue = currentRate === 'full' ? FULL_DAY_RATE : HALF_DAY_RATE;
-  var total = selectedDays.length * rateValue;
+  let rateValue = currentRate === 'full' ? FULL_DAY_RATE : HALF_DAY_RATE;
+  let total = selectedDays.length * rateValue;
   updateTotalCost(total);
 }
 
